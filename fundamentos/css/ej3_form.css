@@ -1,0 +1,14 @@
+input:focus {
+    outline: none;
+    border-color: #ca5f07;
+    border-width: 5px;
+    }
+
+input::placeholder {
+    color: rgb(49, 106, 43);
+    font-size: 15px;
+    }
+
+#info_usario{
+    text-align: center;
+}
