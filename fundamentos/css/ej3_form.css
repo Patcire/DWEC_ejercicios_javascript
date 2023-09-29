@@ -10,5 +10,5 @@ input::placeholder {
     }
 
 #info_usario{
-    text-align: center;
+        display: inline-block;
 }
