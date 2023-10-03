@@ -1,6 +1,6 @@
 
 let user_name= prompt("¿Cuál es tu nombre?\n")
-let hora= moment().hours()
+let hora= moment().hours() //coge la hora actual del sistema
 let tipo_saludo
 
 if (hora>=6 && hora<12){

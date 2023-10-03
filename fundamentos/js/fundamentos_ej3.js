@@ -1,7 +1,7 @@
 console.log("hola")
 
 let user_name= prompt("¿Cuál es tu nombre?\n")
-let hora= prompt("¿Y qué hora es?\n")
+let hora= prompt("¿Y qué hora es (0-24)?\n")
 let tipo_saludo
 
 if (hora>=6 && hora<12){

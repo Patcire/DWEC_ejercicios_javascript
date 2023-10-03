@@ -10,8 +10,8 @@ let almacen_caracteres= []
 
 //recorro la cadena y la almaceno en una lista
 for (caracter in cadena){
-    console.log()
-    if (caracter!==" "){
+    console.log(caracter)
+    if (cadena[caracter]!==" "){
         almacen_caracteres=[...almacen_caracteres, cadena[caracter]]
 } 
 }
@@ -22,8 +22,9 @@ const almacen_inverso=(almacen_caracteres.slice()).reverse()
 console.log(almacen_caracteres.toString())
 console.log(almacen_inverso.toString())
 if (almacen_caracteres.toString()===almacen_inverso.toString()){
-    console.log("caca")
+    alert("Su cadena es un palíndromo")
 }
 else{
     alert("Su cadena no es un palíndromo")
 }
+
