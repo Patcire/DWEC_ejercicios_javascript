@@ -1,0 +1,5 @@
+// Creamos Ghost
+
+const ghost= () => {
+
+}

@@ -8,7 +8,7 @@ NOTA: no puedes utilizar el método String.repeat()
 
 const validar_numero= (num)=>{
 
-    if(isNaN(num)) { 
+    if(Number.isNaN(num)) { 
         alert('Error, introduzca un número')
         return false
       } 
@@ -22,30 +22,26 @@ const validar_numero= (num)=>{
 }
 
 
-let numero= prompt("Introduzca un número")
-let respuesta=validar_numero(numero)
+const numero= parseInt(prompt("Introduzca un número"))
+const respuesta=validar_numero(numero)
 
+//creamos la función
 const iterar= (num) =>{
-    return "bauuuba"*num*iterar(n-1)
+    if (num===1){
+        return "bauuuba"
+    }
+    else{
+      
+        return "bauuuba" + "  " +iterar(num-1)
+    }
+
 } 
+
 
 if (respuesta===true){
-    iterar(numero)
+    console.log("eppaa")
+    let respuesta= iterar(numero)
+    alert(respuesta)
 }
 
 
-
-
-
-
-/*
-const iterar= (num) =>{
-        return "bauuuba"*num*iterar(n-1)
-} 
-
-const numero= prompt("Introduzca un número")
-
-if (validar_numero===true){
-    alert(iterar(numero))
-}
-*/
