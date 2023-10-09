@@ -88,8 +88,10 @@ if (valido===true){
              * Nombre: ${lista[0]}
              * Apellido1: ${lista[1]}
              * Apellido2: ${lista[2]}
-            Propuesta de nombre de usuario: ${(lista[0][0]+lista[1]+lista[2][0]).toLowerCase} \n
-            2º Propuesta de nombre de usuario: ${(lista[0][0]).toUpperCase+lista[1][0]+lista[1][1]+lista[1][2]+lista[2][0]+lista[2][1]+lista[2][2]}
+            Propuesta de nombre de usuario: ${((lista[0][0]+lista[1]+lista[2][0]).toString().toLowerCase())} \n
+            2º Propuesta de nombre de usuario: ${(((lista[0][0]).toString().toUpperCase())+
+                ((lista[0][1]+lista[0][2]+lista[1][0]+lista[1][1]+lista[1][2]+lista[2][0]+
+                    lista[2][1]+lista[2][2])).toString().toLowerCase())}
 `)
 }
 
