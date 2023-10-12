@@ -44,91 +44,81 @@ const recetas =[
     "sal\n",   
     }
 ]
-
-
 console.log(recetas);
 
-const enviar_hmtl = (lista_recetas) =>{
-    // declaramos los elementos que vamos a mandar al html
+
+// declaramos los elementos que vamos a mandar al html
 
 let elemento_section=document.createElement("section")
 let elemento_ol=document.createElement("ol")
 let elemento_li=document.createElement("li")
 
-
-// los envíamos
+const enviar_hmtl = () =>{
 
 document.body.appendChild(elemento_section);
 elemento_section.appendChild(elemento_ol);
 
-lista_recetas.forEach(element => {
+recetas.forEach(element => {
     elemento_li.textContent=element.ingredientes
     elemento_ol.appendChild(elemento_li)
-    //reseteo el elemento_li para volver a cargarle un nuevo valor
+
+    //ahora reseteo el elemento_li para volver a cargarle un nuevo valor
+
     elemento_li = document.createElement('li');
 }); 
 }
 
 
-//enviamos la info
+const validar_indice=(indice_usuario)=>{
 
-enviar_hmtl(recetas)
-    
+    if (Number.isNaN(indice_usuario)){
+        alert("Error, debe introducir un nº")
+    }
+
+    else if (indice_usuario<0 || indice_usuario>recetas.length-1){
+        alert("El índice no es válido")
+    }
+    else {
+        return true
+    }
+
+}
+
 // por último creo una función para eliminar la receta indicada
 
-const borrar_receta= (objeto_receta) =>{
+const borrar_receta= () =>{
     
     const indice=parseInt(prompt("Introduzca el número de la receta a borrar\n"))-1
-    alert("receta eliminada")
-    //delete objeto_receta.indice
-    delete objeto_receta[indice]
-    console.log(objeto_receta)
-    //location.reload()
-    const actualizada=recetas.slice()
-    enviar_hmtl(actualizada)
-    
+    elemento_a_borrar=document.getElementsByTagName("li")[indice]
+    //ahora lo borramos
+    if (validar_indice(indice)){
+        elemento_a_borrar.remove()
+        recetas.splice(indice, 1)
+    }
+
 }
 
 
 
 
-//  asocio la función a un click
+//enviamos la info al cargar la página
+
+enviar_hmtl(recetas)
+
+
+//  y asociamos la función a un click
 
 document.getElementById("boton_borrado").addEventListener("click", ()=>{
-    borrar_receta(recetas)
+
+    if (recetas.length!==0){
+        borrar_receta()
+        console.log(recetas.length)
+    }
+    else {
+        alert("Ya no hay nada que borrar")
+    }
+
 })
 
 
 
-/*
-
-const recetas={
-    1:"Berenjena al horno\n"+
-        "Berenjenas frescas---2\n"+
-        "Mayonesa sin huevo---80g\n"+
-        "Tomates---3 unidades"+
-        "Diente de ajo--- Medio\n"+
-        "Limón---1 unidad\n"+
-        "Sal\n",
-    2:"Heura a las finas hierbas\n"+
-        "1---paquete de heura\n"+
-        "1---limón\n"+
-        "1---cebolla\n"+
-        "Hierbas al gusto (albahaca, tomillo, romero, etc\n"+
-        "10g---margarina\n"+
-        "3---patatas de guarnición\n",
-    3: "Habichuelas\n"+
-        "450g---habichuelas\n"+
-        "1---cucharada de aceite de oliva virgen extra\n"+
-        "1---paquete de chorizo vegano\n"+
-        "1---hoja de laurel\n"+
-        "azafrán\n"+
-        "sal\n",
-    4: "Lentejas con arroz\n"+
-        "100g---arroz"+
-        "1---cucharada de aceite de oliva virgen extra\n"+
-        "1---hoja de laurel\n"+
-        "1---cebolla picada\n"+
-        "sal\n",   
-}
-*/

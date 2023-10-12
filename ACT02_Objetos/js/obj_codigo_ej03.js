@@ -7,14 +7,15 @@
 */
 
 
+
 const validar_fecha= (fecha) => {
-    //comprobamos varios formatos indicados entre corchetes
+    //comprobamos el formato requerido y otras variaciones del mismo
     return moment(fecha, ["YYYY-MM-DD","YYYY/MM/DD", "DD/MM/YYYY", "DD-MM-YYYY"], true).isValid()
     
 }
 
 
-//let fecha_usuario = moment().format(prompt("Introduzca una fecha con el siguiente formato YYYY-MM-DD"))
+
 let fecha_input = prompt("Introduzca una fecha con el siguiente formato YYYY-MM-DD")
 const fecha_moment= moment(fecha_input,["YYYY-MM-DD","YYYY/MM/DD", "DD/MM/YYYY", "DD-MM-YYYY"])
 

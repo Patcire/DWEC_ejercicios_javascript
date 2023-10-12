@@ -41,8 +41,9 @@ const validar_cadena = (cadena_usuario) => {
 
 }
 
-// ahora creo una para validar nombre y apellidos
-// la cual utliza la función anterior
+//Controlo que sea un nombre y 2 apellidos
+// utlizo la función anterior
+// esto no controla que haya nombres y apellidoscompuestos
 
 const validar_nombre_apellido= (nombre_ape) => {
 
@@ -54,7 +55,9 @@ const validar_nombre_apellido= (nombre_ape) => {
 
         // comprobamos que tengamos 3 palabras
         if (separado.length !== 3){
-            alert ("Error, necesita introducir su nombre y los dos apellidos separados por un espacio")
+            alert ("Error, necesita introducir su nombre y los dos apellidos separados por un espacio\n"+
+                    "Si tiene un nombre o apellido compuesto o formado por varias palabras junte estas con un guión\n"+
+                    "Ejemplo: Juan-Jesús de-Bornos Medina")
             return false
         }
         else{
@@ -65,7 +68,10 @@ const validar_nombre_apellido= (nombre_ape) => {
 
 
 
-const nombre_usuario=prompt("intro cadena")
+const nombre_usuario=prompt("Introduzca su nombre y apellidos\n"+
+                                    "\n"+
+                                    "IMPORTANTE: Si tiene un nombre o apellido compuesto o formado por varias palabras junte estas con un guión\n" +
+                                    "Ejemplo: Juan-Jesús de-Bornos Medina")
 
 const valido=validar_nombre_apellido(nombre_usuario)
 

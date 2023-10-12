@@ -13,68 +13,123 @@ tan solo habrá que actualizar los puntos, recolocando a éste equipo en la posi
 */
 
 
-const almacenar_puntos = () =>{
+// obtengo la tabla del html
+
+let tabla=document.getElementById("furbo")
+
+// creo las funciones necesarias para mi programa
+
+const almacenar_puntos_nombre = () =>{
+
+    // esta función se usará en la función principal isnsertar_fila
 
     const tabla = document.getElementById("furbo")
     const almacen_puntuaciones=[]
     console.log(tabla.rows.length)
 
+    let equipo
+
     for (let i = 0; i < tabla.rows.length; i++) {
-        almacen_puntuaciones.push(tabla.rows[i].cells[2].textContent)
-        console.log(almacen_puntuaciones)
+        almacen_puntuaciones.push(
+            equipo={
+                posicion:i+1,
+                nombre:(tabla.rows[i].cells[1].textContent),
+                puntuacion:(parseInt(tabla.rows[i].cells[2].textContent))
+        })
+
     }
+    console.log(almacen_puntuaciones)
     return almacen_puntuaciones
 }
 
-const insertar_fila = () =>{
+const comprobar_nombre_existe=(informacion_equipos)=>{
 
-    let tabla=document.getElementById("furbo")
-    let puntos=document.getElementById("puntos_usuario")
 
-    
-    let fila_nueva=tabla.insertRow(-1)
+        let nombre_equipo_nuevo=document.getElementById("equipo_usuario").value
+        console.log(nombre_equipo_nuevo)
+        const nombre_incluido=informacion_equipos.indexOf(nombre_equipo_nuevo)
 
-    //creamos las celdas
+        if (nombre_incluido!==-1){
+                //como el nombre ya existe
+                //actualizo el resto de parámetros de esa fila
 
-    let celda1=fila_nueva.insertCell(0)
-    let celda2=fila_nueva.insertCell(1)
-    let celda3=fila_nueva.insertCell(2)
+                (tabla.rows[i].cells[0]).innerHTML=document.getElementById("posicion_usuario").value
+            (tabla.rows[i].cells[2]).innerHTML=document.getElementById("puntos_usuario_usuario").value
+        }
+        else {
+            return false
+        }
 
-    celda1.innerHTML=4
-    celda2.innerHTML="Pepis"
-    celda3.innerHTML=12
 
 }
 
 
+const actualizar_posiciones=()=>{
 
-insertar_fila()
-let puntos_tabla=almacenar_puntos()
-console.log(puntos_tabla)
+    // esta función se usará en la función principal isnsertar_fila
+    // Y además de actualizar, mme permite controlar que
+    //una posición que no se corresponda con los puntos, se corrija
 
+    for (let i = 1; i < tabla.rows.length; i++) { //empiezo en 1 porque la posicion 0 es el th
+        (tabla.rows[i].cells[0]).innerHTML=i
+        console.log("eee")
+    }
+}
 
-
-
-
-/*
-//solo insertar - funciona
 const insertar_fila = () =>{
 
-    
-    let tabla=document.getElementById("furbo")
-   
-    let fila_nueva=tabla.insertRow(-1)
+    let puntos_nuevos=document.getElementById("puntos_usuario").value
+    console.log(puntos_nuevos)
+    let indice_fila_nueva
 
-    //creamos las celdas
+    //usamos las funciones creadas con anterioridad
 
-    let c1=fila_nueva.insertCell(0)
-    let c2=fila_nueva.insertCell(1)
-    let c3=fila_nueva.insertCell(2)
+    const equipos=almacenar_puntos_nombre()
+    for (elemento in equipos){
+        if (puntos_nuevos>equipos[elemento].puntuacion){
+            indice_fila_nueva=equipos[elemento].posicion-1
+            console.log("funciona")
+            console.log(equipos[elemento].puntuacion);
+            break
+        }
 
-    c1.innerHTML=4
-    c2.innerHTML="Pepis"
-    c3.innerHTML=12
+    }
+
+    // comprobamos si ese nombre ya existe y por tanto si se crea nueva fila o no
+
+    if (comprobar_nombre_existe(equipos)===false){
+
+        //creamos las filas y sus celdas
+
+        let fila_nueva=tabla.insertRow(indice_fila_nueva)
+        let celda1_posicion=fila_nueva.insertCell(0)
+        let celda2_equipo=fila_nueva.insertCell(1)
+        let celda3_puntos=fila_nueva.insertCell(2)
+
+
+        //y le pasamos los valores correspondientes
+
+        celda1_posicion.innerHTML=document.getElementById("posicion_usuario").value
+        celda2_equipo.innerHTML=document.getElementById("equipo_usuario").value
+        celda3_puntos.innerHTML=puntos_nuevos
+
+        // por último actualizo las posiciones de todos los elementos
+
+        actualizar_posiciones()
+    }
+
 
 }
-insertar_fila()
-*/
+
+// el programa:
+
+document.getElementById("envio_info").addEventListener("click",()=>{
+
+    insertar_fila()
+})
+
+
+
+
+
+

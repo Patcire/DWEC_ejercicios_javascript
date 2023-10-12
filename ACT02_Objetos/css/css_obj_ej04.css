@@ -1,19 +1,18 @@
-html{
+body{
     background-color: blanchedalmond;
     margin: 50px;
 }
 
-h1{
-    text-align: center;
 
-}
+
+
 h4{
     text-align: center;
 }
 
-h3{
+h1{
     
-    background-color: chocolate;
+
     width: 25%;
     margin: 0 auto; 
     text-align: center;
