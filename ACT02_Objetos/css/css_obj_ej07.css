@@ -1,5 +1,13 @@
 #pulsa{
     margin: auto;
     display: block;
+    border-style: inset;
+    border-color: aquamarine;
+    font-size: larger;
+
+
+}
+body{
+    background-color: antiquewhite;
 }
 
