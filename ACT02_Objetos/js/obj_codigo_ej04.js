@@ -16,22 +16,14 @@ const almacenar_datos=()=>{
 
     //con moment almacenamos la hora actual con el formato dado
 
-    let horario= moment().format("YYYY-MM-DD, hh:mm:ss A")
+    //let horario= moment()
 
     // sacamos los distintos datos
 
-     horas= moment().hour()
-     minutos= moment().minute()
-     segundos= moment().second()
-     mitad_dia=moment().format("A") //este valor indica si es PM o AM
-
-    //si tienen un solo dígito los paso a cadena y con padStart les concatenamos un 0 al inicio de la cadena
-    if (horas<10 || minutos<10 || segundos<10){
-        horas=moment().hour().toString().padStart(2, "0")
-        minutos= moment().minute().toString().padStart(2, "0")
-        segundos= moment().second().toString().padStart(2, "0")
-
-    }
+     horas= moment().format("hh")
+     minutos= moment().format("mm")
+     segundos= moment().format("ss")
+     mitad_dia=moment().format("a") //este valor indica si es PM o AM
 
 }
 

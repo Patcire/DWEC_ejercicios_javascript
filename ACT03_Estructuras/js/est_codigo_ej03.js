@@ -8,8 +8,9 @@ Ten en cuenta que la longitud de las dimensiones de la matriz no tienen
 porqué coincidir, pudiendo tener 0 elementos en una dimensión y 4 elementos en otra.
 */
 
-const matriz=[[1,7,2], [4,9], [6]]
-
+//const matriz=[[1,7,2], [4,9], [6]]
+//console.log(typeof (matriz))
+//console.log(Array.isArray(matriz));
 
 const aplanar= (bidimensional) =>{
     let aplanada=[]
@@ -22,7 +23,7 @@ const aplanar= (bidimensional) =>{
 }
 
 
-let unidimensional= aplanar(matriz)
+//let unidimensional= aplanar(matriz)
 
 //Para ordenar voy a crear una función que implemente el algoritmo burbuja
 
@@ -44,8 +45,38 @@ const mecanismo_burbuja= (lista) =>{
     }
     return lista
     }
-   
 
-unidimensional=mecanismo_burbuja(unidimensional)
-alert(unidimensional)
+const comprobar_array_bidimensional=(input)=>{
+
+    try {
+        const matriz=JSON.parse(input)
+        if (Array.isArray(matriz)===false){
+            return false
+        }
+        else if (matriz.every(fila=> Array.isArray(fila) && fila.every(elemento=>!isNaN(elemento)))){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+    catch{
+        alert("Error, introduzca el formato pedido")
+    }
+}
+
+
+//programa
+
+let input_usuario=prompt("introduzca un array bidimensional de números\n")
+if (comprobar_array_bidimensional(input_usuario)){
+    let unidimensional= aplanar(JSON.parse(input_usuario))
+    unidimensional=mecanismo_burbuja(unidimensional)
+    alert(unidimensional)
+}
+
+
+
+
 

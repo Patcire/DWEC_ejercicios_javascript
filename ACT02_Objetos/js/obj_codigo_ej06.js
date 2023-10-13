@@ -47,14 +47,15 @@ const comprobar_nombre_existe=(informacion_equipos)=>{
 
         let nombre_equipo_nuevo=document.getElementById("equipo_usuario").value
         console.log(nombre_equipo_nuevo)
-        const nombre_incluido=informacion_equipos.indexOf(nombre_equipo_nuevo)
+        const nombre_incluido=informacion_equipos.includes(nombre_equipo_nuevo)
+        let indice_nombre_repe=informacion_equipos.indexOf(nombre_equipo_nuevo)
 
-        if (nombre_incluido!==-1){
+        if (nombre_incluido){
                 //como el nombre ya existe
                 //actualizo el resto de parámetros de esa fila
 
-                (tabla.rows[i].cells[0]).innerHTML=document.getElementById("posicion_usuario").value
-            (tabla.rows[i].cells[2]).innerHTML=document.getElementById("puntos_usuario_usuario").value
+            (tabla.rows[indice_nombre_repe].cells[0]).innerHTML=document.getElementById("posicion_usuario").value
+            (tabla.rows[indice_nombre_repe].cells[2]).innerHTML=document.getElementById("puntos_usuario_usuario").value
         }
         else {
             return false
